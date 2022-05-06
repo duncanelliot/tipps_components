@@ -1,0 +1,34 @@
+{
+  "name": "tipps_components",
+  "version": "1.1.3",
+  "description": "holds commonly used vanilla JS front end components",
+  "main": "src/js/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duncanelliot/tipps_components.git"
+  },
+  "keywords": [
+    "generic",
+    "vanilla",
+    "js",
+    "components",
+    "web",
+    "front",
+    "end"
+  ],
+  "author": "Duncan Elliot, David Hardy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duncanelliot/tipps_components/issues"
+  },
+  "homepage": "https://github.com/duncanelliot/tipps_components#readme",
+  "dependencies": {
+    "@types/jquery": "^3.5.14",
+    "dayjs": "^1.11.1",
+    "jquery": "^3.6.0"
+  }
+}
