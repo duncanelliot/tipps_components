@@ -10,6 +10,7 @@ import { update_entry_length, create_pagination, update_pagination, paginationCl
     v1.01   DE    Apr 2020  : added properties.hasOwnProperty("original_data") to the filter function 
     v1.02   DH    Apr 2020  : added ability to change time formats used
     v1.03   DE/DH May 2020  : persist the table filter to local storage
+    v1.04   DH    May 2020  : retain event handlers on sorting
 
     possible improvements:
     - having to use original_data is prone to error
@@ -155,7 +156,7 @@ export function Table(options) {
   };
 
   function createRows(data, add_rows_data, custom_col_styles) {
-    $(_tbody).empty();
+    $(_tbody).children().detach()
 
     // create table row for adding (if one exists)
     if (Object.keys(add_rows_data).length > 0) {
