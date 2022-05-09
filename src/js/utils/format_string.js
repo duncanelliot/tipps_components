@@ -1,4 +1,4 @@
-import {} from "dayjs";
+import dayjs from "dayjs";
 
 export function format_string(val, date_format = "DD MMM", date_time_format = "DD MMM HH:mm") {
   var dateFormat = /^\d{1,4}[\.|\/|-]\d{1,2}[\.|\/|-]\d{1,4}/;
