@@ -1,11 +1,11 @@
 //@ts-check
 "use-strict";
-
 /*
 
     v1.00   DE   Feb 2022 :  Initial version
     v1.01   DH   Apr 2022 :  Can show disabled options
-    v1.02   DH   Apr 2022 :  initial value input compared with data values (previously was compared with data names)
+    v1.02   DH   Apr 2022 :  initial value input compared with options values (previously was compared with options names)
+    v1.03   DE   May 2022 :  Refactored + added the ability to toggle
 
     possible improvements:
     - dont show the placeholder in the list
@@ -14,91 +14,74 @@
 */
 
 /**
- * @typedef {Object} data
- * @property {string} name
+ * @typedef {Object} options
+ * @property {string} opt_name
  * @property {string|number} value
  * @property {boolean} [selected]
  * @property {boolean} [disabled]
  */
 /**
  *
- * @param {data[]} data // Data to feed into the dropdown
+ * @param {options[]} options // options to feed into the dropdown
  * @param {Object} initial_value // Initial_value value to set the dropdown
- * @param {{name:string, text:string}} [placeholder] // placeholder for the dropdown
+ * @param {string} [placeholder] // placeholder for the dropdown
  * @param {Function} [onChange] // Custom onChange function
  * @returns {Object}
  *
  */
 
-export function Dropdown(data, initial_value, placeholder = null, onChange = null) {
-  this.version = "1.02";
+export function Dropdown(options, initial_value, placeholder = null, onChange = null) {
+  // debugger;
+  // public properties
+  this.version = "1.03";
   this.description = "non native dropdown object";
+  this.jquery = $("<select>", { class: "dropdown" }).on("change", onChange ? (e) => onChange(e) : () => {});
 
-  this.dropdown = $("<select>", { class: "dropdown" });
+  // private variables
+  var selected = null;
+  var previous = null;
 
-  if (onChange) this.dropdown.on("change", (e) => onChange(e));
+  // load the options in the select component
+  load_options.bind(this)();
 
-  let _data = data;
-  this.selected = null;
-  this.previous = null;
+  // method to enable or disable the jquery
+  this.toggle = (on) => (on ? this.jquery.attr("disabled", on) : this.jquery.removeAttr("disabled"));
 
-  // var self = this;
-  // create placeholder if it exists
-  if (placeholder !== null) {
-    let label_option = $("<option/>", { name: placeholder.name }).val("").text(placeholder.text);
-    this.dropdown.append(label_option.get(0));
-  }
-
-  // create inputs
-  createInputs.bind(this)();
-
-  // assumes that header and data are in the same order
-  function createInputs() {
-    Object.keys(_data).forEach((data) => {
-      let option = $("<option/>", { name: _data[data].name }).val(_data[data].value).text(_data[data].name);
-
-      if (_data[data].hasOwnProperty("disabled")) option.attr("disabled", true);
-
-      if (_data[data]?.selected || _data[data].value === initial_value) {
-        this.selected = _data[data].value;
-        this.previous = _data[data].value;
-        option.prop("selected", true);
+  // create options to the select (assumes that header and options are in the same order)
+  function load_options() {
+    options.unshift({ value: "placeholder", opt_name: placeholder || "Select your option", disabled: true, selected: true });
+    options.forEach((option) => {
+      let __ = $("<option/>", { name: option.opt_name }).val(option.value).text(option.opt_name);
+      // @ts-ignore
+      if (option.hasOwnProperty("disabled")) __.attr("disabled", true);
+      if (option?.selected || option.value === initial_value) {
+        selected = option.value;
+        previous = option.value;
+        __.prop("selected", true);
       }
-
-      this.dropdown.append(option.get(0));
+      this.jquery.append(__.get(0));
     });
   }
 
-  this.updateInputs = (new_data, placeholder) => {
-    $(this.dropdown).empty();
-    if (placeholder !== null) {
-      let label_option = $("<option/>", { name: placeholder.name }).val("").text(placeholder.text);
-      this.dropdown.append(label_option.get(0));
-    }
-    Object.keys(new_data).forEach((data) => {
-      let option = $("<option/>", { name: new_data[data].name }).val(new_data[data].value).text(new_data[data].name);
-      if (new_data[data].hasOwnProperty("disabled")) option.attr("disabled", true);
-      if (new_data[data]?.selected) {
-        this.selected = new_data[data].value;
-        this.previous = new_data[data].value;
-        option.prop("selected", true);
-      }
-
-      this.dropdown.append(option.get(0));
-    });
+  // method to replace the current options with a new set
+  this.updateInputs = (new_options) => {
+    $(this.jquery).empty();
+    options = new_options;
+    load_options.bind(this)();
   };
 
+  // picks an option
   this.setSelected = (value, is_update) => {
     if (is_update) {
-      let existing = this.previous;
-      this.previous = this.selected;
-      this.selected = value;
+      let existing = previous;
+      previous = selected;
+      selected = value;
       $(`option [value=${existing}]`).prop("selected", false);
       $(`option [value=${value}]`).prop("selected", true);
-      $(this.dropdown).val(value);
+      $(this.jquery).val(value);
     } else {
-      this.selected = this.previous;
-      $(this.dropdown).val(this.previous);
+      selected = previous;
+      this.jquery.val(previous);
     }
   };
 }

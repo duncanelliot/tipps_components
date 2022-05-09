@@ -1,10 +1,6 @@
 {
   "name": "tipps_components",
-<<<<<<< HEAD
-  "version": "1.0.0",
-=======
-  "version": "1.1.3",
->>>>>>> 65b9f45dec604286e1640550378011c5f5758ad9
+  "version": "1.1.6",
   "description": "holds commonly used vanilla JS front end components",
   "main": "src/js/index.js",
   "type": "module",
