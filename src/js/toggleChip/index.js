@@ -13,7 +13,7 @@
      - 
 */
 
-export default class ToggleChip {
+export class ToggleChip {
   constructor(text, subtext, is_visible, _activate, _deactivate, is_booked = null) {
     const activate_icon = $("<span>", { class: "activate fa fa-eye" })
       .css({ "padding-left": "20px", cursor: "pointer" })

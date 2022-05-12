@@ -1,8 +1,20 @@
 //@ts-check
 "use-strict";
 import * as utils from "../utils/index.js";
-import { modal } from "./modal.js";
-import TextInput from "./textInput.js";
+import { modal } from "../modal/index.js";
+import { TextInput } from "../textInput/index.js";
+
+/*
+   VERSION CONTROL
+   v1.00   DE   May 2022 :  Initial version
+   v1.01   DE   May 2022 :  Returns a modal
+
+
+   possible improvements:
+     - 
+     - 
+     - 
+*/
 
 /**
  *
@@ -14,7 +26,7 @@ import TextInput from "./textInput.js";
  * @property {String} api //api to call to updated
  * @property {String} pk // where clause
  */
-export default function editForm(opts) {
+export function editForm(opts) {
   let { data, labels, included_fields, excluded_fields, api, pk, http_method, initial_changes } = opts;
 
   // where we record state changes
@@ -85,4 +97,6 @@ export default function editForm(opts) {
   }
 
   let _m = modal("Edit fields", fields, buttons, false);
+
+  return _m;
 }
