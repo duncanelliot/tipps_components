@@ -5,4 +5,5 @@ export { Logo } from "./logo/index.js";
 export { TextInput } from "./textInput/index.js";
 export { Button } from "./button/index.js";
 export { ToggleChip } from "./toggleChip/index.js";
+export { modal } from "./modal/index.js";
 import * as $ from "./lib/jquery.js";
