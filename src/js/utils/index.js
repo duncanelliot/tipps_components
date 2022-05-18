@@ -7,3 +7,4 @@ export { get_cookie } from "./get_cookie.js";
 export { icons } from "./icons.js";
 export { hexToRGBA } from "./hexToRGBA.js";
 export { regex } from "./regex.js";
+export { getNumber } from "./getNumber.js";
