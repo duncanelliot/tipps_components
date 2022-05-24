@@ -1,0 +1,46 @@
+.text__input__wrapper {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.text__input:hover,
+.text__input:focus {
+  border: none;
+}
+
+.text__label {
+  padding-left: 5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.text__input {
+    width: 100%;
+		background: #fff;
+		/* color: $input-text-color; */
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 10px 8px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.text__input::placeholder {
+  color: #9c9c9c;
+  font-size: 13px;
+}
+
+.text__input:disabled {
+  /* color: red; */
+  text-decoration: none;
+  background: #eeeeee;
+  color: #b0bec5;
+  cursor: not-allowed	;
+}

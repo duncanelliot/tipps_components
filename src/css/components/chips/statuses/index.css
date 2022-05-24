@@ -1,0 +1,19 @@
+/* .chip__pending {
+  color: antiquewhite;
+  border: 3px solid;
+  border-radius: 30px;
+  text-align: center;
+  height: 1.6rem;
+  vertical-align: middle;
+  background: rgb(126, 87, 194, 0.5);
+  box-shadow: 0 0 12px purple;
+} */
+
+.finance_status_chip {
+  display: flex; 
+  width: min-content;
+  padding-right:5px;
+  padding-left:5px;
+  justify-content: 'center';
+  border-radius: 5%; 
+}

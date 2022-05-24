@@ -1,0 +1,51 @@
+/* https://github.com/zoltantothcom/vanilla-js-tooltip/blob/master/styles/vanilla-js-tooltip.css */
+
+.b-tooltip {
+  /* border: 1px solid #fff; */
+  display: inline-block;
+  font-size: 0.875em;
+  padding: 0.75em;
+  position: absolute;
+  text-align: left;
+  z-index: 1000;
+}
+.b-tooltip-light {
+  background: #eaeaea;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #eaeaea 100%);
+  box-shadow:
+  0.9px 0px 2.2px rgba(0, 0, 0, 0.051),
+  2.2px 0px 5.3px rgba(0, 0, 0, 0.073),
+  4.1px 0px 10px rgba(0, 0, 0, 0.09),
+  7.4px 0px 17.9px rgba(0, 0, 0, 0.107),
+  13.8px 0px 33.4px rgba(0, 0, 0, 0.129),
+  33px 0px 80px rgba(0, 0, 0, 0.18)
+;
+
+border-radius: 2%;
+  color: #242424;
+}
+.b-tooltip-dark {
+  background: #121212;
+  /* background: linear-gradient(to bottom, #6e6e6e 0%, #242424 100%); */
+  box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+  color: #bdbdbd  ;
+}
+/* body {
+  font-family: sans-serif;
+  height: 2000px;
+}
+
+img {
+  display: block;
+}
+.wrap {
+  margin: 0 auto;
+  width: 800px;
+} */

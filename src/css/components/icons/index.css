@@ -1,0 +1,19 @@
+.icon__disabled {
+  /* cursor: 'default'; */
+  color: rgba(169, 169, 169, 0.25) !important;
+}
+
+.icon-end {
+  margin-left: 6px;
+}
+
+.svg-icon {
+  margin-left: 6px;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  vertical-align: middle;
+  transform: translateY(-2px);
+}
