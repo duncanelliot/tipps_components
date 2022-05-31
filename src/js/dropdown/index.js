@@ -6,6 +6,7 @@
     v1.01   DH   Apr 2022 :  Can show disabled options
     v1.02   DH   Apr 2022 :  initial value input compared with options values (previously was compared with options names)
     v1.03   DE   May 2022 :  Refactored + added the ability to toggle
+    v1.04   DE   May 2022 :  Default option arr if null + disabled if no options
 
     possible improvements:
     - dont show the placeholder in the list
@@ -30,16 +31,18 @@
  *
  */
 
-export function Dropdown(options, initial_value, placeholder = null, onChange = null) {
+export function Dropdown(options = [], initial_value, placeholder = null, onChange = null) {
   // debugger;
   // public properties
   this.version = "1.03";
   this.description = "non native dropdown object";
   this.jquery = $("<select>", { class: "dropdown" }).on("change", onChange ? (e) => onChange(e) : () => {});
-
   // private variables
   var selected = null;
   var previous = null;
+
+  // disable it if there are no options
+  if (options.length === 0) this.jquery.prop("disabled", "disabled");
 
   // load the options in the select component
   load_options.bind(this)();
@@ -65,6 +68,7 @@ export function Dropdown(options, initial_value, placeholder = null, onChange = 
 
   // method to replace the current options with a new set
   this.updateInputs = (new_options) => {
+    this.jquery.prop("disabled", new_options.length === 0 ? "disabled" : null);
     $(this.jquery).empty();
     options = new_options;
     load_options.bind(this)();
