@@ -32,6 +32,7 @@
 //  * @returns {{button: JQuery}}
 
 export function Button({ label, disabled = false, id, className = "", styles = {}, onClick, inmodal = true }) {
+
   this.button = $("<button>", {
     type: "button",
     class: [`${inmodal ? "modal__button" : ""}`, className].join(" "),
