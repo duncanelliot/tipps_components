@@ -87,7 +87,7 @@ module.exports = [
     plugins: [
       new webpack.EnvironmentPlugin({
         ENV: "development",
-        ENDPOINT: "http://localhost:5551",
+        ENDPOINT: "http://tipps.co.uk.eu.ngrok.io",
       }),
       new webpack.ProvidePlugin({
         $: "jquery",
