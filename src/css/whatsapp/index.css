@@ -1,0 +1,60 @@
+/* Chat container_chats */
+.chat {
+  font-family: 'roboto', sans-serif;
+  font-size: larger;
+}
+
+.container_chat {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Style images */
+.container_chat img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.client p {
+  text-align: right;
+}
+
+/* Darker chat container_chat */
+.tipps {
+  background: rgb(219, 248, 192);
+}
+
+.client img {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+/* Style time text */
+.client .time {
+  float: right;
+}
+
+/* Clear floats */
+.container_chat::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+/* Style time text */
+.time {
+  color: #aaa;
+}
+
+.chat_input {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 75%;
+}
